@@ -1,17 +1,28 @@
-Option ExplicitSub Roll2()        
-Range("R7:R2500").ClearContents    
+Option Explicit
+
+Sub Roll2()   
+
+Range("R7:R2500").ClearContents  
+
 With Range("P7:P2500")        
-.Offset(, 0).SpecialCells(xlCellTypeFormulas, xlNumbers).Copy        
-'^--| consider cells with number value resulting from the formula        
-.Offset(, 2).PasteSpecial SkipBlanks:=True, Paste:=xlPasteValues    
+  .Offset(, 0).SpecialCells(xlCellTypeFormulas, xlNumbers).Copy        
+  '^--| consider cells with number value resulting from the formula        
+  .Offset(, 2).PasteSpecial SkipBlanks:=True, Paste:=xlPasteValues    
 End With    
-End 
-SubSub Months()    
-Worksheets("ETF Dividends-Roll data").Range("AA7:AA10000").ClearContents    
+
+EndSub
+
+Sub Months()    
+
+Worksheets("ETF Dividends-Roll data").Range("AA7:AA10000").ClearContents 
+
 Dim intRow As Integer   
 Dim intMonths As Integer    
+
 intMonths = Worksheets("ETF Dividends-Roll data").Range("AB5").Value    
+
 For intRow = 1 To intMonths        
-Cells(intRow + 6, 27) = intRow    
+  Cells(intRow + 6, 27) = intRow    
 Next intRow
+
 End Sub
