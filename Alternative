@@ -1,0 +1,23 @@
+Sub Graph()
+
+Dim VisRng As Range
+
+Dim vData As Variant
+vData = Worksheets("Calculator").Range("K10:K61")
+Dim i As Integer
+
+With Worksheets("Calculator")
+    Set VisRng = .Range("D10:D61").SpecialCells(xlCellTypeConstants)
+    VisRng.Copy
+    Worksheets("Graphs").Range("B2").PasteSpecial xlValues
+End With
+
+For i = LBound(vData) To UBound(vData)
+   If Len(vData(i, 1)) Then
+     With Worksheets("Graphs")
+         .Range("A" & .Rows.Count).End(xlUp).Offset(1).Value = vData(i, 1)
+     End With
+   End If
+Next
+
+End Sub
